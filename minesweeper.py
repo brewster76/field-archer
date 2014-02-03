@@ -12,7 +12,6 @@ class MineField:
         '.' = no mines, has not been stepped upon or marked
         0-8 = Had been stepped on. Value is number of adjacent squares containing mines
         'x' = mine
-        'f' = flagged
     """
 
     def __init__(self, content, width=10, height=10, mines=10):
@@ -59,8 +58,7 @@ class MineField:
         for y in range(height):
             new = []
             for x in range(width):
-                #new.append(ttk.Button(content, command=lambda x1=x, y1=y: self.step(row=y1, col=x1)))
-                new.append(ttk.Button(content))
+                new.append(ttk.Button(content, width=3))
             self.minefieldbuttons.append(new)
         
         for y in range(height):
@@ -194,11 +192,11 @@ if __name__ == '__main__':
     root = Tk()
 
     content = ttk.Frame(root, padding=(3,3,12,12))
-    frame = ttk.Frame(content, borderwidth=2, relief="sunken", width=200, height=100)
+    frame = ttk.Frame(content, borderwidth=2, relief="sunken")
 
     content.grid(column=0, row=0, sticky=(N, S, E, W))
 
-    mf = MineField(content, width=10, height=20, mines=5)
+    mf = MineField(content, width=10, height=10, mines=10)
 
     root.mainloop()
 
